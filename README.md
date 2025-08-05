@@ -49,10 +49,10 @@ The `DbContext` can work with any database that has an EF Core provider:
 
 ### How Migrations Work
 'dotnet ef migrations add InitialCreate' is the command that will generate an InitialCreate.cs
-EF Core scans the DBContext and finds all DbSet<T> properties to build tables off of.
-Since we only have DbSet<Recipe>, only the Recipes table is created.
+EF Core scans the DBContext and finds all DbSet(T) properties to build tables off of.
+Since we only have DbSet(Recipe), only the Recipes table is created.
 'dotnet ef database update' executes the SQL commands in the migration.
-When we ran that in this project, the Recipes table was created in the RecipeApiDb db because that's what we configured in our connectionString, RecipeDbContext, and Program.cs
+When we ran that in this project, the Recipes table was created in the RecipeApiDb db because that's what we configured in our connectionString, RecipeDbContext, and Program.cs.
 1. **Model Changes**: Modify your `Recipe` model or `RecipeDbContext` configuration
 2. **Generate Migration**: `dotnet ef migrations add MigrationName`
 3. **Apply to Database**: `dotnet ef database update`
@@ -76,9 +76,7 @@ Creates the `Recipes` table with columns:
 - `CreatedAt` (datetime2, required, default: GETUTCDATE())
 - `UpdatedAt` (datetime2, optional)
 
-## API Endpoints (Planned)
-
-Based on `RecipeApi.http`, the following endpoints will be implemented:
+## API Endpoints
 
 - `GET /api/recipes` - Get all recipes
 - `GET /api/recipes/{id}` - Get recipe by ID
@@ -104,18 +102,6 @@ The application will connect to:
 - **Server**: localhost
 - **Database**: RecipeApiDb
 - **Authentication**: Windows Authentication (Trusted_Connection=true)
-
-## Missing Components
-
-### 1. DbContext Service Registration
-Add to `Program.cs`:
-```csharp
-builder.Services.AddDbContext<RecipeDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-```
-
-### 2. Recipes Controller
-Create `Controllers/RecipesController.cs` to handle HTTP requests for recipe operations.
 
 ## Development Tools
 
@@ -172,10 +158,3 @@ dotnet ef migrations remove
 # Update database to specific migration
 dotnet ef database update MigrationName
 ```
-
-## Next Steps
-1. Add DbContext service registration to `Program.cs`
-2. Create `RecipesController` with CRUD endpoints
-3. Test API endpoints using `RecipeApi.http`
-4. Add validation and error handling
-5. Implement additional features (search, filtering, etc.) 
