@@ -2,22 +2,6 @@
 
 A .NET 9 Web API for managing recipes with Entity Framework Core and SQL Server.
 
-## Project Structure
-
-```
-RecipeApi/
-├── Data/
-│   └── RecipeDbContext.cs          # Database context and entity configuration
-├── DTOs/
-│   └── RecipeDto.cs                # Data Transfer Objects for API requests/responses
-├── Models/
-│   └── Recipe.cs                   # Recipe entity model
-├── Migrations/                     # Database migration files
-├── Program.cs                      # Application entry point and configuration
-├── appsettings.json               # Configuration including database connection string
-└── RecipeApi.http                 # HTTP requests for testing API endpoints
-```
-
 ## Database Setup
 
 ### Connection String
