@@ -1,0 +1,47 @@
+@RecipeApi_HostAddress = http://localhost:5099
+
+### Get all recipes
+GET {{RecipeApi_HostAddress}}/api/recipes
+Accept: application/json
+
+###
+
+### Get recipe by ID
+GET {{RecipeApi_HostAddress}}/api/recipes/1
+Accept: application/json
+
+###
+
+### Create a new recipe - Authentic Street Tacos
+POST {{RecipeApi_HostAddress}}/api/recipes
+Content-Type: application/json
+
+{
+  "title": "Authentic Street Tacos",
+  "description": "Classic Mexican street tacos with marinated carne asada, fresh cilantro, onions, and lime. Served on warm corn tortillas with your favorite salsa.",
+  "ingredients": "1 lb flank steak or skirt steak, 1/4 cup olive oil, 2 limes (juiced), 3 cloves garlic (minced), 1 tsp cumin, 1 tsp chili powder, 1/2 tsp salt, 1/2 tsp black pepper, 12 corn tortillas, 1/2 cup fresh cilantro (chopped), 1/2 cup white onion (diced), 2 limes (cut into wedges), Salsa of your choice",
+  "instructions": "1. In a bowl, mix olive oil, lime juice, garlic, cumin, chili powder, salt, and pepper to create marinade\n2. Place steak in a resealable bag and pour marinade over it. Refrigerate for 2-4 hours\n3. Heat a grill or cast-iron skillet over high heat\n4. Remove steak from marinade and grill for 4-5 minutes per side for medium-rare\n5. Let steak rest for 5 minutes, then slice thinly against the grain\n6. Warm tortillas on the grill or in a dry skillet for 30 seconds each side\n7. Assemble tacos: place meat on tortilla, top with cilantro, onions, and a squeeze of lime\n8. Serve immediately with salsa and additional lime wedges",
+  "cookingTimeMinutes": 30,
+  "servings": 4,
+  "difficulty": "Medium",
+  "cuisine": "Mexican"
+}
+
+###
+
+### Update a recipe
+PUT {{RecipeApi_HostAddress}}/api/recipes/1
+Content-Type: application/json
+
+{
+  "title": "Authentic Street Tacos (Updated)",
+  "servings": 6,
+  "difficulty": "Easy"
+}
+
+###
+
+### Delete a recipe
+DELETE {{RecipeApi_HostAddress}}/api/recipes/1
+
+###
